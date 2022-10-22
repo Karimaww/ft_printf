@@ -12,6 +12,7 @@ int ft_is_printable(char c)
 
 int ft_check_flag(const char **format)
 {
+    //printf("in ft_check_flag : %c\n", **format);
     if (**format == '-' || **format == '0')
     {
         *format += 1;
@@ -51,5 +52,7 @@ int ft_check_precision(const char **format)
                 return (1);
         }
     }
+    //if (ft_is_printable(**format))
+     //   return (1);
     return (0);
 }

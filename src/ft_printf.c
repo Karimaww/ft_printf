@@ -7,16 +7,17 @@ char    *ft_flags(const char **format)
     flag = NULL;
     while (**format == ' ')
         *format += 1;
-
     if (!ft_check_flag(format))
         return (NULL);
     while ((**format >= 0 && **format <= 9)
         || **format == '.' || **format == '*'
         || **format == '-')
     {
+        //printf("FORMAT A STRJOIN : %s", *format);
         ft_strjoin(flag, *format);
         *format += 1;
     }
+    printf("flag : %s\n", flag);
     return (flag);
 }
 
@@ -25,10 +26,13 @@ int     ft_format(va_list argc, const char *format)
     char    *str;
     char    *flag;
     int     len;
-
-    if ((flag = ft_flags(&format)) == NULL)
-        return (-1);
-    
+    //printf("%c\n", *format);
+    if (!ft_is_printable(*format) 
+        && (flag = ft_flags(&format)) == NULL)
+    {
+            return (-1);
+    }
+    //printf("HERE");
     if (*format == 'd' || *format == 'i')
         str = ft_int(argc);
     if (*format == 'u')
@@ -62,7 +66,14 @@ int ft_printf(const char *format, ...)
     {
         format++;
         if (c == '%')
-            nbchar += ft_format(args, format);
+        {
+            int value;
+            nbchar += ft_format(args, format); 
+            // L'erreur est qu'il n'avance pas dans le va_arg d'une fct a une autre t.t
+            value = (int) va_arg(args, int);
+            printf("%d", value);
+            format++;
+        }
         else
         {
             write(1, &c, 1);

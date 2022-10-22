@@ -12,7 +12,7 @@ int main()
     printf("%u\n", 5, 5, 5);
     printf("%p\n", *bon);
     */
-    ft_printf("%d yuio hj %i hj\n", 56, 42);
+    ft_printf("%d yuioss hj %i hj\n", 56, 42);
     /*
     free(bon);
     free(mauvais);

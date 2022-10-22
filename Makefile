@@ -15,7 +15,6 @@ OBJ_DIR		= obj
 RM			= rm -f
 
 SOURCES =	ft_check_params.c\
-				ft_chr.c			\
 				ft_decimal.c		\
 				ft_printf.c			\
 				ft_ptr.c			\
