@@ -19,6 +19,9 @@ SOURCES =	ft_check_params.c\
 				ft_printf.c			\
 				ft_ptr.c			\
 				ft_string.c			\
+				ft_hexa.c			\
+				ft_convert_base.c	\
+				ft_convert_base2.c	\
 
 SRC	=	$(addprefix $(SRC_DIR)/,$(SOURCES))
 #$(info $$SRC is [${SRC}])
@@ -34,7 +37,7 @@ $(NAME): $(OBJS)
 	@ranlib $(NAME)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INCLUDE)/libftprintf.h
-	@mkdir -p obj
+	@mkdir -p $(OBJ_DIR)
 	@$(CC) $(CFLAGS) -I $(INCLUDE) -o $@ -c $<
 
 clean:

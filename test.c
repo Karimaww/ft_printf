@@ -12,7 +12,12 @@ int main()
     printf("%u\n", 5, 5, 5);
     printf("%p\n", *bon);
     */
-    ft_printf("%d yuioss hj %i hj\n", 56, 42);
+    
+    int n;
+    ft_printf("%p\n", &n);
+    
+    //printf("%d\n", ft_printf("hexadecimal : %X unsigned int : %u string : %s string : %s int : %d char : %c\n", 0xF, 254, "kokoriko", "ehh", 0xF, 'e'));
+    //printf("%d\n", ft_printf("123 %s %u", "kokoriko", 254));
     /*
     free(bon);
     free(mauvais);
