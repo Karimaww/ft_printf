@@ -15,13 +15,14 @@ OBJ_DIR		= obj
 RM			= rm -f
 
 SOURCES =	ft_check_params.c\
-				ft_decimal.c		\
-				ft_printf.c			\
-				ft_ptr.c			\
-				ft_string.c			\
-				ft_hexa.c			\
-				ft_convert_base.c	\
-				ft_convert_base2.c	\
+			ft_decimal.c		\
+			ft_printf.c			\
+			ft_ptr.c			\
+			ft_string.c			\
+			ft_hexa.c			\
+			ft_convert_base.c	\
+			ft_convert_base2.c	\
+
 
 SRC	=	$(addprefix $(SRC_DIR)/,$(SOURCES))
 #$(info $$SRC is [${SRC}])
@@ -46,9 +47,9 @@ clean:
 	@make clean -C $(LIBFT)
 
 fclean: clean
-	@$(RM) $(NAME)
+	@rm -f $(NAME)
 	@make fclean -C $(LIBFT)
 
-re: fclean all
+re: fclean
 
-.PHONY: fclean re norme all clean
+.PHONY: all clean fclean re
