@@ -4,8 +4,6 @@ NAME		= libftprintf.a
 
 CFLAGS		= -Wall -Wextra -Werror
 
-LIBFT		= libft
-
 INCLUDE		= include
 
 SRC_DIR		= src
@@ -14,14 +12,14 @@ OBJ_DIR		= obj
 
 RM			= rm -f
 
-SOURCES =	ft_check_params.c\
-			ft_decimal.c		\
+SOURCES =	ft_printf_x.c		\
+			ft_printf_s.c		\
+			ft_printf_c.c		\
+			ft_printf_p.c		\
+			ft_printf_di.c		\
+			ft_printf_u.c		\
 			ft_printf.c			\
-			ft_ptr.c			\
-			ft_string.c			\
-			ft_hexa.c			\
-			ft_convert_base.c	\
-			ft_convert_base2.c	\
+			ft_printf_utils.c	\
 
 
 SRC	=	$(addprefix $(SRC_DIR)/,$(SOURCES))
@@ -32,24 +30,20 @@ OBJS =	$(addprefix $(OBJ_DIR)/,$(SOURCES:.c=.o))
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@make -C $(LIBFT)
-	@cp libft/libft.a ./$(NAME)
-	@ar rc $(NAME) $(OBJS)
-	@ranlib $(NAME)
+	ar rc $(NAME) $(OBJS)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INCLUDE)/libftprintf.h
-	@mkdir -p $(OBJ_DIR)
-	@$(CC) $(CFLAGS) -I $(INCLUDE) -o $@ -c $<
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INCLUDE)/ft_printf.h
+	mkdir -p $(OBJ_DIR)
+	$(CC) $(CFLAGS) -I $(INCLUDE) -o $@ -c $<
+
+bonus: $(NAME)
 
 clean:
-	@rm -f $(OBJS)
-	@rm -rf $(OBJ_DIR)
-	@make clean -C $(LIBFT)
+	rm -rf $(OBJ_DIR)
 
 fclean: clean
-	@rm -f $(NAME)
-	@make fclean -C $(LIBFT)
+	rm -f $(NAME)
 
-re: fclean
+re: fclean all
 
 .PHONY: all clean fclean re
